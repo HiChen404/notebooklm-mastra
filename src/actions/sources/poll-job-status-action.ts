@@ -28,7 +28,7 @@ export const pollJobStatusAction = actionClient
 
       await ctx.db
         .update(sources)
-        .set({ processingStatus: "parsed" })
+        .set({ processingStatus: "summarized" })
         .where(eq(sources.id, parsedInput.sourceId));
 
       revalidatePath(`/notebook/${parsedInput.notebookId}`);

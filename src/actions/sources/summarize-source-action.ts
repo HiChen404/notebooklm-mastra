@@ -10,13 +10,13 @@ export const summarizeSourceAction = actionClient
   .schema(
     z.object({
       sourceId: z.string().uuid(),
-      jobId: z.string().uuid(),
+      id: z.string().uuid(),
       notebookId: z.string().uuid(),
     }),
   )
   .action(async ({ ctx, parsedInput }) => {
     try {
-      const res = await getJobResultsInMarkdown(parsedInput.jobId);
+      const res = await getJobResultsInMarkdown(parsedInput.id);
 
       if (!res) {
         throw new Error("Something went wrong while getting the job result");
